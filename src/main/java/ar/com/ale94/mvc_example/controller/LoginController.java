@@ -12,6 +12,9 @@ public class LoginController {
     public String login(@RequestParam String user, @RequestParam String password, Model model) {
         if (!user.isBlank() || !password.isBlank()) {
             model.addAttribute("user", user);
+        } else {
+            model.addAttribute("errorMessage", "Debes ingresar usuario y contraseña");
+            return "error";
         }
         return "dashboard";
     }
